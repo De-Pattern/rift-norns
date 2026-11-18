@@ -7,7 +7,7 @@ set -eu
 cd "$(dirname "$0")"
 src=../src
 inc="-I$src/include/plugin_interface -I$src/include/common -I$src"
-flags="-std=c++17 -O2 -fPIC -shared -ffp-contract=off -fno-exceptions -fno-rtti -fvisibility=hidden -Wall"
+flags="-std=c++17 -O2 -fPIC -shared -ffp-contract=off -fno-exceptions -fno-rtti -fvisibility=hidden -Wall -Wno-maybe-uninitialized"
 case "${1:-host}" in
   host)  mkdir -p build/host; out=build/host/RiftNorns.so; g++ $flags $inc $src/RiftNorns.cpp -o $out ;;
   armhf) out=../RiftNorns/RiftNorns.so; arm-linux-gnueabihf-g++ $flags -march=armv7-a -mfpu=neon-vfpv4 \
