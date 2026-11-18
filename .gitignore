@@ -1,0 +1,4 @@
+ignore/dev/build/
+__pycache__/
+*.raw
+*.wav
